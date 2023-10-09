@@ -1,0 +1,17 @@
+name: Deploy python test in GHA
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "pypy3.9"
+      - run: |
+          python -m pytest
